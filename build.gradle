@@ -10,6 +10,7 @@ mainClassName = 'de.eightbitboy.jenot.Jenot'
 
 codenarc {
 	configFile = rootProject.file("$project.projectDir/config/codenarc/codenarc.groovy")
+	ignoreFailures = true
 }
 
 dependencies {
