@@ -4,9 +4,13 @@ repositories {
 
 apply plugin: 'groovy'
 apply plugin: 'application'
-apply plugin: 'findbugs'
+apply plugin: 'codenarc'
 
 mainClassName = 'de.eightbitboy.jenot.Jenot'
+
+codenarc {
+	configFile = rootProject.file("$project.projectDir/config/codenarc/codenarc.groovy")
+}
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.6'
