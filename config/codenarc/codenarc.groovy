@@ -38,6 +38,7 @@ ruleset {
     HardCodedWindowsFileSeparator 
     HardCodedWindowsRootDirectory 
     IntegerGetInteger 
+    MultipleUnaryOperators 
     RandomDoubleCoercedToZero 
     RemoveAllOnSelf 
     ReturnFromFinallyBlock 
@@ -84,8 +85,11 @@ ruleset {
     IfStatementCouldBeTernary 
     InvertedIfElse 
     LongLiteralWithLowerCaseL 
+    NoDef 
+    //NoTabCharacter 
     ParameterReassignment 
     TernaryCouldBeElvis 
+    //TrailingComma 
     VectorIsObsolete 
     
     // rulesets/design.xml
@@ -386,6 +390,4 @@ ruleset {
     UnusedPrivateMethod 
     UnusedPrivateMethodParameter 
     UnusedVariable 
-    
-    
 }
