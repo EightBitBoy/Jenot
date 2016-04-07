@@ -4,8 +4,9 @@ repositories {
 
 apply plugin: 'groovy'
 apply plugin: 'application'
+apply plugin: 'findbugs'
 
-mainClassName = 'Jenot'
+mainClassName = 'de.eightbitboy.jenot.Jenot'
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.6'
