@@ -5,6 +5,7 @@ repositories {
 apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'codenarc'
+apply plugin: 'idea'
 
 mainClassName = 'de.eightbitboy.jenot.Jenot'
 
