@@ -1,0 +1,9 @@
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile: 'org.codehaus.groovy:groovy-all:2.4.6'
+}
+
+apply plugin: 'groovy'
