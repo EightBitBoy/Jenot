@@ -3,6 +3,9 @@ repositories {
 }
 
 apply plugin: 'groovy'
+apply plugin: 'application'
+
+mainClassName = 'Jenot'
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.6'
