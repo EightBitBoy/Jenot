@@ -16,4 +16,5 @@ codenarc {
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.6'
+    compile 'com.offbytwo.jenkins:jenkins-client:0.3.3'
 }
