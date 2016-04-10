@@ -67,5 +67,7 @@ class Jenot {
         trayIcon.setPopupMenu(popup)
 
         tray.add(trayIcon)
+
+        trayIcon.displayMessage("Message", "Text", TrayIcon.MessageType.INFO)
     }
 }
