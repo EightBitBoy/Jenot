@@ -18,12 +18,18 @@ class Jenot {
         println 'Hello world!'
 
         Properties properties = new Properties()
+        /*
         File propertiesFile = new File('jenot.properties')
         propertiesFile.withInputStream {
             properties.load(it)
         }
+        */
 
         println properties
+
+        Config config = Config.getInstance()
+
+        println config
 
         /*
         JenkinsServer jenkins = new JenkinsServer(new URI(properties.server as String), properties.user as String, properties.password as String)
