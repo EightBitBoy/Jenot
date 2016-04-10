@@ -1,5 +1,7 @@
 package de.eightbitboy.jenot
 
+import com.offbytwo.jenkins.JenkinsServer
+
 println 'Hello world!'
 
 Properties properties = new Properties()
