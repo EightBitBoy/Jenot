@@ -1,16 +1,23 @@
 package de.eightbitboy.jenot
 
+import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
 
-class Config {
-    public static Config getConfig(){
-    }
+class Configuration {
     private static final class InstanceHolder {
-        static final Config INSTANCE = new Config();
+        static final Configuration INSTANCE = new Configuration();
     }
-    private Config () {}
+    private Config config;
 
-    public static Config getInstance () {
+    private Config () {
+        this.config = ConfigFactory.load()
+    }
+
+    public static Configuration getInstance () {
         return InstanceHolder.INSTANCE;
+    }
+
+    public getConfig(){
+        return config;
     }
 }
