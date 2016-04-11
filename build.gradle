@@ -19,6 +19,8 @@ apply plugin: 'codenarc'
 apply plugin: 'idea'
 apply plugin: 'com.github.ben-manes.versions'
 
+version = "0.1.0"
+
 mainClassName = 'de.eightbitboy.jenot.Jenot'
 
 codenarc {
