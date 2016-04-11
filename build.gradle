@@ -4,6 +4,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
+		classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
 	}
 }
 
@@ -16,6 +17,7 @@ apply plugin: 'groovy'
 apply plugin: 'application'
 apply plugin: 'codenarc'
 apply plugin: 'idea'
+apply plugin: 'com.github.ben-manes.versions'
 
 mainClassName = 'de.eightbitboy.jenot.Jenot'
 
