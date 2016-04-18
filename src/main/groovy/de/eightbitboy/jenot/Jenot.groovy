@@ -3,6 +3,7 @@ package de.eightbitboy.jenot
 import com.offbytwo.jenkins.JenkinsServer
 import com.offbytwo.jenkins.model.Build
 import com.offbytwo.jenkins.model.JobWithDetails
+import de.eightbitboy.jenot.ui.Notification
 
 import javax.swing.ImageIcon
 import javax.swing.JFrame
@@ -57,6 +58,7 @@ class Jenot {
         frame.setVisible(true);
         */
 
+        /*
         if (!SystemTray.isSupported()) {
             println "No system tray!"
         }
@@ -76,5 +78,8 @@ class Jenot {
         tray.add(trayIcon)
 
         trayIcon.displayMessage("Message", "Text", TrayIcon.MessageType.INFO)
+        */
+
+        new Notification("Hello world!")
     }
 }
