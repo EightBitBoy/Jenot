@@ -4,6 +4,7 @@ import com.offbytwo.jenkins.JenkinsServer
 import com.offbytwo.jenkins.model.Build
 import com.offbytwo.jenkins.model.JobWithDetails
 import de.eightbitboy.jenot.ui.Notification
+import de.eightbitboy.jenot.ui.Ui
 
 import javax.swing.ImageIcon
 import javax.swing.JFrame
@@ -45,38 +46,7 @@ class Jenot {
         }
         */
 
-
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-        /*
-        JFrame frame = new JFrame("HelloWorldSwing");
-
-        JLabel label = new JLabel("Hello World");
-        frame.getContentPane().add(label);
-
-        frame.pack();
-        frame.setVisible(true);
-        */
-
-        /*
-        if (!SystemTray.isSupported()) {
-            println "No system tray!"
-        }
-
-        SystemTray tray = SystemTray.getSystemTray();
-
-        TrayIcon trayIcon = new TrayIcon(new ImageIcon("tray.png", "Icon").getImage())
-
-        PopupMenu popup = new PopupMenu();
-
-        MenuItem aboutItem = new MenuItem("About");
-
-        popup.add(aboutItem)
-
-        trayIcon.setPopupMenu(popup)
-
-        tray.add(trayIcon)
-        */
+        new Ui()
         new Notification("Hello world!")
     }
 }
