@@ -1,6 +1,7 @@
 package de.eightbitboy.jenot
 
 import com.typesafe.config.Config
+import de.eightbitboy.jenot.ui.Ui
 
 import static com.google.common.truth.Truth.assertThat
 
@@ -24,8 +25,8 @@ class Jenot {
 
         assertThat(properties['server']).named('server').isNotNull()
 
-        //new Ui()
-        //new Notification("Hello world!")
         Jenkins jenkins = new Jenkins(properties['server'])
+        new Ui(jenkins)
+        //new Notification("Hello world!")
     }
 }

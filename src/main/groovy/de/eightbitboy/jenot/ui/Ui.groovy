@@ -14,6 +14,7 @@ class Ui {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
         setUpTray()
+        setUpMonitor()
     }
 
     private void setUpTray() {
@@ -34,5 +35,10 @@ class Ui {
 
         SystemTray tray = SystemTray.getSystemTray();
         tray.add(trayIcon)
+    }
+
+    private void setUpMonitor() {
+        def jobs = this.jenkins.getJobs()
+        println jobs
     }
 }

@@ -7,25 +7,13 @@ import static com.google.common.truth.Truth.assertThat
 
 class Jenkins {
     JenkinsServer server
+    private Map<String, JobWithDetails> userJobs
 
     Jenkins(String url) {
         connect(url)
 
-        def jobs = loadsavedJobs()
-        assertThat(jobs).named('jobs').isNotEmpty()
-
-        println jobs
-
-        /*
-        JobWithDetails job = jenkins.getJob(properties.job as String)
-
-        println job
-
-        List<Build> builds = job.getBuilds()
-        builds.each{
-            println it.details().getDuration()
-        }
-        */
+        this.userJobs = loadSavedJobs()
+        assertThat(userJobs).named('userJobs').isNotEmpty()
     }
 
     private void connect(String url) {
@@ -38,7 +26,7 @@ class Jenkins {
         assertThat(this.server).named('server').isNotNull()
     }
 
-    private Map<String, JobWithDetails> loadsavedJobs() {
+    private Map<String, JobWithDetails> loadSavedJobs() {
         def jobs = [:]
 
         new File('jobs.txt').eachLine { jobLine ->
@@ -50,5 +38,9 @@ class Jenkins {
         }
 
         return jobs
+    }
+
+    Map<String, JobWithDetails> getJobs() {
+        return userJobs
     }
 }
