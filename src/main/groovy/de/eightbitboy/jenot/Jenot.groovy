@@ -25,7 +25,7 @@ class Jenot {
 
         assertThat(properties['server']).named('server').isNotNull()
 
-        Jenkins jenkins = new Jenkins(properties['server'])
+        Jenkins jenkins = new Jenkins(properties['server'] as String)
         new Ui(jenkins)
         //new Notification("Hello world!")
     }
