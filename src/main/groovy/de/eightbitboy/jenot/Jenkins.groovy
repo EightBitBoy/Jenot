@@ -9,7 +9,7 @@ class Jenkins {
     JenkinsServer server
 
     Jenkins(String url) {
-        this.server = new JenkinsServer(new URI(url))
+        connect(url)
 
         Map<String, Job> allJobs = this.server.getJobs()
         assertThat(allJobs).named('allJobs').isNotNull()
@@ -17,8 +17,6 @@ class Jenkins {
         Map<String, Job> jobs = loadsavedJobs()
         assertThat(jobs).named('jobs').isNotEmpty()
 
-        //, properties.user as String, properties.password as String
-        //this.server = new JenkinsServer(new URI(properties.server as String), properties.user as String, properties.password as String)
         /*
         JobWithDetails job = jenkins.getJob(properties.job as String)
 
@@ -29,6 +27,15 @@ class Jenkins {
             println it.details().getDuration()
         }
         */
+    }
+
+    private void connect(String url) {
+        try {
+            this.server = new JenkinsServer(new URI(url))
+        } catch (UnknownHostException) {
+            //TODO
+        }
+        assertThat(this.server).named('server').isNotNull()
     }
 
     private Map<String, Job> loadsavedJobs() {
