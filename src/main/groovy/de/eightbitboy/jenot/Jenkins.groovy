@@ -2,7 +2,9 @@ package de.eightbitboy.jenot
 
 import com.offbytwo.jenkins.JenkinsServer
 import com.offbytwo.jenkins.model.Job
+
 import static com.google.common.truth.Truth.assertThat
+
 class Jenkins {
     JenkinsServer server
 
@@ -11,6 +13,9 @@ class Jenkins {
         Map<String, Job> jobs = this.server.getJobs()
 
         assertThat(jobs).named('jobs').isNotNull()
+
+
+
 
         println jobs
 
