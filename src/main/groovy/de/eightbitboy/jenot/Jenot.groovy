@@ -2,6 +2,8 @@ package de.eightbitboy.jenot
 
 import com.typesafe.config.Config
 
+import static com.google.common.truth.Truth.assertThat
+
 class Jenot {
     public static void main(String... args) {
         println 'Hello world!'
@@ -19,19 +21,11 @@ class Jenot {
 
         println 'config:'
         println config
-        /*
-        JenkinsServer jenkins = new JenkinsServer(new URI(properties.server as String), properties.user as String, properties.password as String)
-        JobWithDetails job = jenkins.getJob(properties.job as String)
 
-        println job
-
-        List<Build> builds = job.getBuilds()
-        builds.each{
-            println it.details().getDuration()
-        }
-        */
+        assertThat(properties['server']).named('server').isNotNull()
 
         //new Ui()
         //new Notification("Hello world!")
+        Jenkins jenkins = new Jenkins(properties['server'])
     }
 }
