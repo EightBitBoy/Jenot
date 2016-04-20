@@ -32,7 +32,8 @@ class Jenkins {
     private void connect(String url) {
         try {
             this.server = new JenkinsServer(new URI(url))
-        } catch (UnknownHostException) {
+        } catch (UnknownHostException ex) {
+            ex.printStackTrace()
             //TODO
         }
         assertThat(this.server).named('server').isNotNull()
