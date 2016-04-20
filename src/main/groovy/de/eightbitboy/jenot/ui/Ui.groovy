@@ -6,7 +6,7 @@ import javax.swing.*
 import java.awt.*
 
 class Ui {
-    Jenkins jenkins
+    private Jenkins jenkins
 
     Ui(Jenkins jenkins) {
         this.jenkins = jenkins
@@ -39,7 +39,6 @@ class Ui {
     }
 
     private void setUpMonitor() {
-        def jobs = this.jenkins.getJobs()
-        println jobs
+        new Monitor(jenkins.getUserJobs())
     }
 }

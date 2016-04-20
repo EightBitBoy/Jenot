@@ -40,7 +40,11 @@ class Jenkins {
         return jobs
     }
 
-    Map<String, JobWithDetails> getJobs() {
+    Map<String, JobWithDetails> getUserJobs() {
         return userJobs
+    }
+
+    JobWithDetails getJobFromServer(String name) {
+        return this.server.getJob(name)
     }
 }

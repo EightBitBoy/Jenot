@@ -1,7 +1,13 @@
 package de.eightbitboy.jenot.ui
 
+import com.offbytwo.jenkins.model.JobWithDetails
+
 class JobStatus {
-    void update() {
+    JobStatus(JobWithDetails) {
+
+    }
+
+    void update(JobWithDetails job) {
 
     }
 }
