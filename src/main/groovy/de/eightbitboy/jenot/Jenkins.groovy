@@ -1,7 +1,7 @@
 package de.eightbitboy.jenot
 
 import com.offbytwo.jenkins.JenkinsServer
-import com.offbytwo.jenkins.model.Job
+import com.offbytwo.jenkins.model.JobWithDetails
 
 import static com.google.common.truth.Truth.assertThat
 
@@ -11,11 +11,10 @@ class Jenkins {
     Jenkins(String url) {
         connect(url)
 
-        def allJobs = this.server.getJobs()
-        assertThat(allJobs).named('allJobs').isNotNull()
-
         def jobs = loadsavedJobs()
         assertThat(jobs).named('jobs').isNotEmpty()
+
+        println jobs
 
         /*
         JobWithDetails job = jenkins.getJob(properties.job as String)
@@ -39,11 +38,15 @@ class Jenkins {
         assertThat(this.server).named('server').isNotNull()
     }
 
-    private Map<String, Job> loadsavedJobs() {
+    private Map<String, JobWithDetails> loadsavedJobs() {
         def jobs = [:]
 
-        new File('jobs.txt').eachLine { line ->
-            println line
+        new File('jobs.txt').eachLine { jobLine ->
+            //TODO handle exceptions
+            def job = this.server.getJob(jobLine)
+            assertThat(job).named('job').isNotNull()
+
+            jobs.put(jobLine, job)
         }
 
         return jobs

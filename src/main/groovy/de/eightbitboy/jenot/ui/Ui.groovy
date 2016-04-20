@@ -1,15 +1,22 @@
 package de.eightbitboy.jenot.ui
 
-import javax.swing.ImageIcon
-import javax.swing.UIManager
-import java.awt.MenuItem
-import java.awt.PopupMenu
-import java.awt.SystemTray
-import java.awt.TrayIcon
+import de.eightbitboy.jenot.Jenkins
+
+import javax.swing.*
+import java.awt.*
 
 class Ui {
-    public Ui(){
+    Jenkins jenkins
+
+    Ui(Jenkins jenkins) {
+        this.jenkins = jenkins
+
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+        setUpTray()
+    }
+
+    private void setUpTray() {
 
         if (!SystemTray.isSupported()) {
             println "No system tray!"
