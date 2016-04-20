@@ -11,13 +11,21 @@ class Monitor extends JFrame {
         super('Monitor')
 
         jobs.each { name, job ->
-            statuses.add(new JobStatus(job))
             println 'Adding job' + name
+
+            def status = new JobStatus(job)
+
+            statuses.add(status)
+            addStatus(status)
         }
 
         setSize(600, 400)
         setVisible(true)
         watch()
+    }
+
+    private void addStatus(JobStatus status) {
+        getContentPane().add(status)
     }
 
     private void watch() {
