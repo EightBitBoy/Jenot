@@ -10,14 +10,12 @@ class Jenkins {
 
     Jenkins(String url) {
         this.server = new JenkinsServer(new URI(url))
-        Map<String, Job> jobs = this.server.getJobs()
 
-        assertThat(jobs).named('jobs').isNotNull()
+        Map<String, Job> allJobs = this.server.getJobs()
+        assertThat(allJobs).named('allJobs').isNotNull()
 
-
-
-
-        println jobs
+        Map<String, Job> jobs = loadsavedJobs()
+        assertThat(jobs).named('jobs').isNotEmpty()
 
         //, properties.user as String, properties.password as String
         //this.server = new JenkinsServer(new URI(properties.server as String), properties.user as String, properties.password as String)
@@ -31,5 +29,15 @@ class Jenkins {
             println it.details().getDuration()
         }
         */
+    }
+
+    private Map<String, Job> loadsavedJobs() {
+        Map<String, Job> jobs = [:]
+
+        new File('jobs.txt').eachLine { line ->
+            println line
+        }
+
+        return jobs
     }
 }
