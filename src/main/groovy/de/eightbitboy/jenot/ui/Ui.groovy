@@ -15,12 +15,17 @@ class Ui {
             println "No system tray!"
         }
 
-        SystemTray tray = SystemTray.getSystemTray();
-        TrayIcon trayIcon = new TrayIcon(new ImageIcon("tray.png", "Icon").getImage())
-        PopupMenu popup = new PopupMenu();
         MenuItem aboutItem = new MenuItem("About");
+        MenuItem exitItem = new MenuItem("Exit");
+
+        PopupMenu popup = new PopupMenu();
         popup.add(aboutItem)
+        popup.add(exitItem)
+
+        TrayIcon trayIcon = new TrayIcon(new ImageIcon("tray.png", "Icon").getImage())
         trayIcon.setPopupMenu(popup)
+
+        SystemTray tray = SystemTray.getSystemTray();
         tray.add(trayIcon)
     }
 }
