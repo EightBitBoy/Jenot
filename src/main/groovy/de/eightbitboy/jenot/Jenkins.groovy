@@ -11,10 +11,10 @@ class Jenkins {
     Jenkins(String url) {
         connect(url)
 
-        Map<String, Job> allJobs = this.server.getJobs()
+        def allJobs = this.server.getJobs()
         assertThat(allJobs).named('allJobs').isNotNull()
 
-        Map<String, Job> jobs = loadsavedJobs()
+        def jobs = loadsavedJobs()
         assertThat(jobs).named('jobs').isNotEmpty()
 
         /*
@@ -39,7 +39,7 @@ class Jenkins {
     }
 
     private Map<String, Job> loadsavedJobs() {
-        Map<String, Job> jobs = [:]
+        def jobs = [:]
 
         new File('jobs.txt').eachLine { line ->
             println line
