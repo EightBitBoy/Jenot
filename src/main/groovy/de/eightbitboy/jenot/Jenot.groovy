@@ -7,7 +7,6 @@ import static com.google.common.truth.Truth.assertThat
 
 class Jenot {
     public static void main(String... args) {
-        println 'Hello world!'
 
         Properties properties = new Properties()
         File propertiesFile = new File('jenot.properties')
@@ -18,6 +17,7 @@ class Jenot {
         println 'properties:'
         println properties
 
+        //TODO use this
         Config config = Configuration.getInstance().getConfig()
 
         println 'config:'
