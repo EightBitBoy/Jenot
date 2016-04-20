@@ -13,7 +13,8 @@ class Ui {
 
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-        setUpTray()
+        //TODO enable tray
+        //setUpTray()
         setUpMonitor()
     }
 
