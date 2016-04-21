@@ -14,14 +14,15 @@ class MonitorView extends JFrame {
     MonitorView(Map<String, JobWithDetails> jobs) {
         super('MonitorView')
 
-        this.content = new JPanel(new GridLayout(5, 1))
+        this.content = new JPanel(new GridLayout(jobs.size(), 1))
         add(this.content)
+
         addStatusViews(jobs)
         pack()
         setVisible(true)
     }
 
-    private void addStatusViews(Map<String, JobWithDetails> jobs){
+    private void addStatusViews(Map<String, JobWithDetails> jobs) {
         jobs.each { name, job ->
             println 'Adding job ' + name
 
@@ -32,7 +33,7 @@ class MonitorView extends JFrame {
 
     }
 
-    void refresh(){
+    void refresh() {
         //TODO
     }
 }
