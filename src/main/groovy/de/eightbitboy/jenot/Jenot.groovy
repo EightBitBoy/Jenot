@@ -47,12 +47,17 @@ class Jenot {
         */
 
         new Ui(jenkins)
+
+        while (true) {
+            sleep(4000)
+            println 'Refresh'
+        }
         //new Notification("Hello world!")
     }
 }
 
-class MyComponent{
-    MyComponent(){
+class MyComponent {
+    MyComponent() {
 
     }
 }

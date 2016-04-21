@@ -39,6 +39,6 @@ class Ui {
     }
 
     private void setUpMonitor() {
-        new Monitor(jenkins.getUserJobs())
+        new MonitorView(jenkins.getUserJobs())
     }
 }

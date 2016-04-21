@@ -6,23 +6,20 @@ import javax.swing.*
 import java.awt.*
 import java.util.List
 
-class Monitor extends JFrame {
-    private List<JobStatus> statuses = []
+class MonitorView extends JFrame {
+    private List<JobStatusView> statuses = []
 
     JPanel content
 
-    Monitor(Map<String, JobWithDetails> jobs) {
-        super('Monitor')
+    MonitorView(Map<String, JobWithDetails> jobs) {
+        super('MonitorView')
 
         this.content = new JPanel(new GridLayout(5, 1));
-
-        this.content.add(new JLabel("foo"))
 
         jobs.each { name, job ->
             println 'Adding job' + name
 
-            def status = new JobStatus(job)
-
+            def status = new JobStatusView(job)
             statuses.add(status)
             addStatus(status)
         }
@@ -32,18 +29,13 @@ class Monitor extends JFrame {
         add(this.content)
         pack()
         setVisible(true)
-        //watch()
     }
 
-    private void addStatus(JobStatus status) {
+    private void addStatus(JobStatusView status) {
         this.content.add(status)
     }
 
-    private void watch() {
-        //TODO use some mechanism provided by swing
-        while (true) {
-            sleep(2000)
-            println 'Refresh'
-        }
+    void refresh(){
+
     }
 }
