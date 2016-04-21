@@ -32,7 +32,7 @@ class Jenot {
 
         Jenkins jenkins = new Jenkins(properties['server'] as String)
 
-
+        /*
         JFrame main = new JFrame('Main')
         main.setSize(400, 400)
 
@@ -44,8 +44,9 @@ class Jenot {
 
         main.add(container)
         main.setVisible(true)
+        */
 
-        //new Ui(jenkins)
+        new Ui(jenkins)
         //new Notification("Hello world!")
     }
 }

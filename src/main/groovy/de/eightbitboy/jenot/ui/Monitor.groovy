@@ -14,8 +14,9 @@ class Monitor extends JFrame {
     Monitor(Map<String, JobWithDetails> jobs) {
         super('Monitor')
 
-        this.content = new JPanel(new BorderLayout());
-        content.setLayout(new FlowLayout())
+        this.content = new JPanel(new GridLayout(5, 1));
+
+        this.content.add(new JLabel("foo"))
 
         jobs.each { name, job ->
             println 'Adding job' + name
@@ -26,9 +27,12 @@ class Monitor extends JFrame {
             addStatus(status)
         }
 
+
         setSize(600, 400)
+        add(this.content)
+        pack()
         setVisible(true)
-        watch()
+        //watch()
     }
 
     private void addStatus(JobStatus status) {
