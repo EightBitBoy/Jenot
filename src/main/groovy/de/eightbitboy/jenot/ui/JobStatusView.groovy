@@ -38,12 +38,12 @@ class JobStatusView extends JPanel {
         add(bottom)
     }
 
-    void update(JobWithDetails job) {
-        this.job = job
-
-        Build lastBuild = job.getLastBuild().getNumber()
+    void refresh() {
+        int lastBuildNumber = job.getLastBuild().getNumber()
         //TODO take care of first build
-        Build previousBuild = job.getBuildByNumber(lastBuild.details().getNumber() - 1)
-        this.previousBuildLabel.setText(previousBuild.details().getResult().toString())
+        Build previousBuild = job.getBuildByNumber(lastBuildNumber - 1)
+        if (previousBuild) {
+            this.previousBuildLabel.setText(previousBuild.details().getResult().toString())
+        }
     }
 }

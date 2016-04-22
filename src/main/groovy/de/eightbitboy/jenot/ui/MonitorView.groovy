@@ -34,6 +34,8 @@ class MonitorView extends JFrame {
     }
 
     void refresh() {
-
+        statuses.each { status ->
+            status.refresh()
+        }
     }
 }
