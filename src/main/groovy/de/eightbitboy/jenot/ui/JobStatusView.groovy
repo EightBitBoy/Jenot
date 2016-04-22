@@ -65,10 +65,15 @@ class JobStatusView extends JPanel {
 
         if (buildDetails.isBuilding()) {
             long buildTime = new Date().getTime() - buildDetails.getTimestamp()
-
+            this.progressBar.setEnabled(true)
             this.progressBar.setMinimum(0)
             this.progressBar.setMaximum(buildDetails.getEstimatedDuration())
             this.progressBar.setValue(buildTime as Integer)
+        } else {
+            this.progressBar.setEnabled(false)
+            this.progressBar.setMinimum(0)
+            this.progressBar.setMaximum(100)
+            this.progressBar.setValue(100)
         }
     }
 }
