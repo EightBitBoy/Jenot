@@ -52,8 +52,9 @@ class JobStatusView extends JPanel {
 
     void refresh() {
         JobWithDetails details = job.details()
+        Build lastBuild = details.getLastBuild()
 
-        int lastBuildNumber = details.getLastBuild().getNumber()
+        int lastBuildNumber = lastBuild.getNumber()
         this.buildNumberLabel.setText(lastBuildNumber as String)
 
         //TODO take care of first build
@@ -61,5 +62,7 @@ class JobStatusView extends JPanel {
         if (previousBuild) {
             this.previousBuildLabel.setText(previousBuild.details().getResult().toString())
         }
+
+        
     }
 }

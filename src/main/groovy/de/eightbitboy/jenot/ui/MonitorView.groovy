@@ -13,6 +13,7 @@ class MonitorView extends JFrame {
 
     MonitorView(Map<String, JobWithDetails> jobs) {
         super('MonitorView')
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
         this.content = new JPanel(new GridLayout(jobs.size(), 1))
         add(this.content)
