@@ -60,7 +60,7 @@ class JobStatusView extends JPanel {
         if (buildDetails.isBuilding()) {
             this.buildStatusLabel.setText('BUILDING')
         } else {
-            this.buildStatusLabel.setText(buildDetails.getResult())
+            this.buildStatusLabel.setText(buildDetails.getResult() as String)
         }
 
         if (buildDetails.isBuilding()) {
