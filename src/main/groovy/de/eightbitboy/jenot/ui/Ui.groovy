@@ -7,6 +7,7 @@ import java.awt.*
 
 class Ui {
     private Jenkins jenkins
+    private MonitorView monitor
 
     Ui(Jenkins jenkins) {
         this.jenkins = jenkins
@@ -39,6 +40,15 @@ class Ui {
     }
 
     private void setUpMonitor() {
-        new MonitorView(jenkins.getUserJobs())
+        this.monitor = new MonitorView(jenkins.getUserJobs())
+    }
+
+    void watch() {
+        //TODO find a better method
+        while (true) {
+            println 'Refreshing!'
+            this.monitor.refresh()
+            sleep(4000)
+        }
     }
 }

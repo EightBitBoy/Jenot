@@ -1,5 +1,6 @@
 package de.eightbitboy.jenot.ui
 
+import com.offbytwo.jenkins.model.Build
 import com.offbytwo.jenkins.model.JobWithDetails
 
 import javax.swing.*
@@ -9,6 +10,8 @@ import java.awt.*
 class JobStatusView extends JPanel {
 
     private JobWithDetails job
+
+    private JLabel previousBuildLabel
 
     JobStatusView(JobWithDetails job) {
         this.job = job
@@ -20,9 +23,11 @@ class JobStatusView extends JPanel {
     }
 
     private setUpTop() {
-        JPanel top = new JPanel(new GridLayout(1, 1))
+        JPanel top = new JPanel(new GridLayout(1, 2))
         top.setBorder(new LineBorder(Color.GREEN))
         top.add(new JLabel(this.job.getName()))
+        this.previousBuildLabel = new JLabel()
+        top.add(this.previousBuildLabel)
         add(top)
     }
 
@@ -34,6 +39,11 @@ class JobStatusView extends JPanel {
     }
 
     void update(JobWithDetails job) {
+        this.job = job
 
+        Build lastBuild = job.getLastBuild().getNumber()
+        //TODO take care of first build
+        Build previousBuild = job.getBuildByNumber(lastBuild.details().getNumber() - 1)
+        this.previousBuildLabel.setText(previousBuild.details().getResult().toString())
     }
 }

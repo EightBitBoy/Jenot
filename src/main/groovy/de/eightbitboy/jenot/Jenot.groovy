@@ -28,12 +28,7 @@ class Jenot {
 
         Jenkins jenkins = new Jenkins(properties.server as String)
 
-        new Ui(jenkins)
-
-        //TODO find a better method
-        while (true) {
-            println 'Refreshing!'
-            sleep(4000)
-        }
+        Ui ui = new Ui(jenkins)
+        ui.watch()
     }
 }
