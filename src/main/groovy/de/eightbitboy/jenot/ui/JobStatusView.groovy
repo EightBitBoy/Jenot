@@ -1,6 +1,6 @@
 package de.eightbitboy.jenot.ui
 
-import com.offbytwo.jenkins.model.Build
+import com.offbytwo.jenkins.model.BuildWithDetails
 import com.offbytwo.jenkins.model.Job
 import com.offbytwo.jenkins.model.JobWithDetails
 
@@ -13,7 +13,7 @@ class JobStatusView extends JPanel {
     private Job job
 
     private JLabel jobNameLabel
-    private JLabel previousBuildLabel
+    private JLabel buildStatusLabel
     private JLabel buildNumberLabel
     private JProgressBar progressBar
 
@@ -30,11 +30,11 @@ class JobStatusView extends JPanel {
         JPanel top = new JPanel(new GridLayout(1, 3))
 
         this.jobNameLabel = new JLabel(job.getName())
-        this.previousBuildLabel = new JLabel()
+        this.buildStatusLabel = new JLabel()
         this.buildNumberLabel = new JLabel()
 
         top.add(this.jobNameLabel)
-        top.add(this.previousBuildLabel)
+        top.add(this.buildStatusLabel)
         top.add(this.buildNumberLabel)
 
         add(top)
@@ -51,18 +51,24 @@ class JobStatusView extends JPanel {
     }
 
     void refresh() {
-        JobWithDetails details = job.details()
-        Build lastBuild = details.getLastBuild()
+        JobWithDetails jobDetails = this.job.details()
+        BuildWithDetails buildDetails = jobDetails.getLastBuild().details()
 
-        int lastBuildNumber = lastBuild.getNumber()
+        int lastBuildNumber = buildDetails.getNumber()
         this.buildNumberLabel.setText(lastBuildNumber as String)
 
-        //TODO take care of first build
-        Build previousBuild = details.getBuildByNumber(lastBuildNumber - 1)
-        if (previousBuild) {
-            this.previousBuildLabel.setText(previousBuild.details().getResult().toString())
+        if (buildDetails.isBuilding()) {
+            this.buildStatusLabel.setText('BUILDING')
+        } else {
+            this.buildStatusLabel.setText(buildDetails.getResult())
         }
 
-        
+        if (buildDetails.isBuilding()) {
+            long buildTime = new Date().getTime() - buildDetails.getTimestamp()
+
+            this.progressBar.setMinimum(0)
+            this.progressBar.setMaximum(buildDetails.getEstimatedDuration())
+            this.progressBar.setValue(buildTime as Integer)
+        }
     }
 }
