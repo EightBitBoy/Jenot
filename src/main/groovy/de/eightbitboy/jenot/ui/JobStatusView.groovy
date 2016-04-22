@@ -1,6 +1,7 @@
 package de.eightbitboy.jenot.ui
 
 import com.offbytwo.jenkins.model.Build
+import com.offbytwo.jenkins.model.Job
 import com.offbytwo.jenkins.model.JobWithDetails
 
 import javax.swing.*
@@ -9,11 +10,13 @@ import java.awt.*
 
 class JobStatusView extends JPanel {
 
-    private JobWithDetails job
+    private Job job
 
+    private JLabel jobNameLabel
     private JLabel previousBuildLabel
+    private JLabel buildNumberLabel
 
-    JobStatusView(JobWithDetails job) {
+    JobStatusView(Job job) {
         this.job = job
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS))
         setBorder(new LineBorder(Color.RED))
@@ -23,11 +26,17 @@ class JobStatusView extends JPanel {
     }
 
     private setUpTop() {
-        JPanel top = new JPanel(new GridLayout(1, 2))
+        JPanel top = new JPanel(new GridLayout(1, 3))
         top.setBorder(new LineBorder(Color.GREEN))
-        top.add(new JLabel(this.job.getName()))
+
+        this.jobNameLabel = new JLabel(job.getName())
         this.previousBuildLabel = new JLabel()
+        this.buildNumberLabel = new JLabel()
+
+        top.add(this.jobNameLabel)
         top.add(this.previousBuildLabel)
+        top.add(this.buildNumberLabel)
+
         add(top)
     }
 
@@ -39,9 +48,13 @@ class JobStatusView extends JPanel {
     }
 
     void refresh() {
-        int lastBuildNumber = job.getLastBuild().getNumber()
+        JobWithDetails details = job.details()
+
+        int lastBuildNumber = details.getLastBuild().getNumber()
+        this.buildNumberLabel.setText(lastBuildNumber as String)
+
         //TODO take care of first build
-        Build previousBuild = job.getBuildByNumber(lastBuildNumber - 1)
+        Build previousBuild = details.getBuildByNumber(lastBuildNumber - 1)
         if (previousBuild) {
             this.previousBuildLabel.setText(previousBuild.details().getResult().toString())
         }
