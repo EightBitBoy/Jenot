@@ -15,11 +15,12 @@ class JobStatusView extends JPanel {
     private JLabel jobNameLabel
     private JLabel previousBuildLabel
     private JLabel buildNumberLabel
+    private JProgressBar progressBar
 
     JobStatusView(Job job) {
         this.job = job
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS))
-        setBorder(new LineBorder(Color.RED))
+        setBorder(new LineBorder(Color.BLACK))
 
         setUpTop()
         setUpBottom()
@@ -27,7 +28,6 @@ class JobStatusView extends JPanel {
 
     private setUpTop() {
         JPanel top = new JPanel(new GridLayout(1, 3))
-        top.setBorder(new LineBorder(Color.GREEN))
 
         this.jobNameLabel = new JLabel(job.getName())
         this.previousBuildLabel = new JLabel()
@@ -42,8 +42,11 @@ class JobStatusView extends JPanel {
 
     private setUpBottom() {
         JPanel bottom = new JPanel(new GridLayout(1, 1))
-        bottom.setBorder(new LineBorder(Color.BLUE))
-        bottom.add(new JLabel('Progress'))
+
+        this.progressBar = new JProgressBar()
+
+        bottom.add(this.progressBar)
+
         add(bottom)
     }
 
