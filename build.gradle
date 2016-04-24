@@ -33,4 +33,8 @@ dependencies {
 	compile 'com.offbytwo.jenkins:jenkins-client:0.3.3'
 	compile 'com.typesafe:config:1.3.0'
 	compile 'com.google.truth:truth:0.28'
+
+	testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+
+	//testRuntime 'org.assertj:assertj-swing:3.2.0'
 }
