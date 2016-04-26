@@ -3,7 +3,12 @@ PROJECT = 'Jenot'
 BRANCHES = ['master', 'dev']
 
 STEPS = [
-		'Assemble': 'assemble'
+		'assemble'         : 'assemble',
+		'build'            : 'build',
+		'check'            : 'check',
+		'cobertura'        : 'cobertura',
+		'groovydoc'        : 'groovydoc',
+		'dependencyUpdates': 'dependencyUpdates'
 ]
 
 BRANCHES.each { String branch ->
@@ -11,19 +16,20 @@ BRANCHES.each { String branch ->
 }
 
 def createJobPipeline(String branch) {
-	STEPS.each { String name, String command ->
-		createJob(PROJECT, branch, name, command)
+	STEPS.each { name, command ->
+		createJob(PROJECT as String, branch as String, name as String, command as String)
 	}
 }
 
 /**
  *
- * @param branch The branch being checked out.
- * @param name The name for the job.
- * @param command The gradle command run on job execution.
+ * @param projectName The project's name.
+ * @param branchName The branch being checked out.
+ * @param jobName The name for the job.
+ * @param command The Gradle command run on job execution.
  */
 def createJob(String projectName, String branchName, String jobName, String command) {
-	job(projectName + '-' + branchName + '-' + jobName) {
+	job(projectName + branchName.capitalize() + '-' + jobName) {
 		logRotator(-1, 20, -1, 20)
 		scm {
 			git {
@@ -34,6 +40,7 @@ def createJob(String projectName, String branchName, String jobName, String comm
 				branch(branchName)
 			}
 		}
+		H/5 * * * *
 		steps {
 			shell('bash gradlew ' + command)
 		}
