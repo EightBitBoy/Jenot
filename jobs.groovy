@@ -40,7 +40,9 @@ def createJob(String projectName, String branchName, String jobName, String comm
 				branch(branchName)
 			}
 		}
-		H/5 * * * *
+		triggers {
+			scm('H/5 * * * *')
+		}
 		steps {
 			shell('bash gradlew ' + command)
 		}
