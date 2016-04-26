@@ -2,17 +2,17 @@ PROJECT = 'Jenot'
 
 BRANCHES = ['master', 'dev']
 
-Map<String, String> STEPS = [
+STEPS = [
 		'Assemble': 'assemble'
 ]
 
 BRANCHES.each { String branch ->
-	createJobPipeline(this, branch)
+	createJobPipeline(branch)
 }
 
-def createJobPipeline(env, String branch) {
-	env.STEPS.each { String name, String command ->
-		createJob(env.PROJECT, branch, name, command)
+def createJobPipeline(String branch) {
+	STEPS.each { String name, String command ->
+		createJob(PROJECT, branch, name, command)
 	}
 }
 
