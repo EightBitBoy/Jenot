@@ -35,7 +35,7 @@ def createJob(String projectName, String branchName, String jobName, String comm
 			}
 		}
 		steps {
-			shell('sh ' + command)
+			shell('bash gradlew ' + command)
 		}
 	}
 }
