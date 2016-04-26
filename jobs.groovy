@@ -7,12 +7,12 @@ Map<String, String> STEPS = [
 ]
 
 BRANCHES.each { String branch ->
-	createJobPipeline(branch)
+	createJobPipeline(this, branch)
 }
 
-def createJobPipeline(String branch) {
-	STEPS.each { String name, String command ->
-		createJob(PROJECT, branch, name, command)
+def createJobPipeline(env, String branch) {
+	env.STEPS.each { String name, String command ->
+		createJob(env.PROJECT, branch, name, command)
 	}
 }
 
