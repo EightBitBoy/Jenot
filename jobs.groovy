@@ -6,7 +6,7 @@ Map<String, String> STEPS = [
 		'Assemble': 'assemble'
 ]
 
-branches.each { String branch ->
+BRANCHES.each { String branch ->
 	createJobPipeline(branch)
 }
 
