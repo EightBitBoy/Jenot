@@ -22,8 +22,8 @@ def createJobPipeline(String branch) {
  * @param name The name for the job.
  * @param command The gradle command run on job execution.
  */
-def createJob(String project, String branchName, String jobName, String command) {
-	job(project + '-' + branch + '-' + jobName) {
+def createJob(String projectName, String branchName, String jobName, String command) {
+	job(projectName + '-' + branchName + '-' + jobName) {
 		logRotator(-1, 20, -1, 20)
 	}
 	scm {
