@@ -25,17 +25,17 @@ def createJobPipeline(String branch) {
 def createJob(String projectName, String branchName, String jobName, String command) {
 	job(projectName + '-' + branchName + '-' + jobName) {
 		logRotator(-1, 20, -1, 20)
-	}
-	scm {
-		git {
-			remote {
-				name('origin')
-				url('https://github.com/EightBitBoy/Jenot.git')
+		scm {
+			git {
+				remote {
+					name('origin')
+					url('https://github.com/EightBitBoy/Jenot.git')
+				}
+				branch(branchName)
 			}
-			branch(branchName)
 		}
-	}
-	steps {
-		gradle(command)
+		steps {
+			gradle(command)
+		}
 	}
 }
